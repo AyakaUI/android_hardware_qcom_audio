@@ -1,0 +1,4 @@
+// Legacy (APR/Q6) primary audio HAL for fogos on the stock ADSP, kept in its
+// own namespace so it never collides with the AudioReach HAL module names.
+soong_namespace {
+}

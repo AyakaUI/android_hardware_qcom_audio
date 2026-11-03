@@ -593,7 +593,11 @@ static void update_hardware_info_holi(
         !strncmp(snd_card_name, "holi-qrdsku1-snd-card",
                  sizeof("holi-qrdsku1-snd-card")) ||
         !strncmp(snd_card_name, "holi-mtpsku1-snd-card",
-                 sizeof("holi-mtpsku1-snd-card"))) {
+                 sizeof("holi-mtpsku1-snd-card")) ||
+        !strncmp(snd_card_name, "holi-9370_fs1815-snd-card",
+                 sizeof("holi-9370_fs1815-snd-card")) ||
+        !strncmp(snd_card_name, "holi-9370_aw87xxx-snd-card",
+                 sizeof("holi-9370_aw87xxx-snd-card"))) {
         strlcpy(hw_info->name, "holi", sizeof(hw_info->name));
         hw_info->is_stereo_spkr = false;
     } else {
