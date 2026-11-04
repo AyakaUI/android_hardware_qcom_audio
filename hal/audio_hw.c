@@ -6632,6 +6632,7 @@ static ssize_t out_write(struct audio_stream_out *stream, const void *buffer,
             if (out->usecase == USECASE_INCALL_MUSIC_UPLINK ||
                 out->usecase == USECASE_INCALL_MUSIC_UPLINK2 ||
                 (out->usecase == USECASE_AUDIO_PLAYBACK_VOIP &&
+                 out->config.channels == 1 &&
                  !audio_extn_utils_is_vendor_enhanced_fwk())) {
                 size_t channel_count = audio_channel_count_from_out_mask(out->channel_mask);
                 int16_t *src = (int16_t *)buffer;
