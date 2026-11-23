@@ -1,6 +1,6 @@
 cc_library_shared {
-    // Selected with ro.hardware.audio.primary=fogos.
-    name: "audio.primary.fogos",
+    // Selected with ro.hardware.audio.primary=sm6375.
+    name: "audio.primary.sm6375",
     relative_install_path: "hw",
     vendor: true,
     owner: "qti",
