@@ -3141,7 +3141,7 @@ int select_devices(struct audio_device *adev, audio_usecase_t uc_id)
                 ALOGE("%s: stream.out is NULL", __func__);
                 return -EINVAL;
             }
-            assign_devices(&usecase->device_list, &usecase->stream.out->device_list);
+            assign_output_devices(&usecase->device_list, &usecase->stream.out->device_list);
             in_snd_device = SND_DEVICE_NONE;
             if (out_snd_device == SND_DEVICE_NONE) {
                 struct stream_out *voip_out = adev->primary_output;

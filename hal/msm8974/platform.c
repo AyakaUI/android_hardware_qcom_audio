@@ -6801,11 +6801,10 @@ snd_device_t platform_get_output_snd_device(void *platform, struct stream_out *o
     int stream = -1;
 
     list_init(&devices);
-    assign_devices(&devices, &out->device_list);
+    assign_output_devices(&devices, &out->device_list);
 
     ALOGV("%s: enter: output devices(%#x)", __func__, get_device_types(&devices));
-    if (list_empty(&devices) ||
-        is_audio_in_device_type(&devices)) {
+    if (list_empty(&devices)) {
         ALOGV("%s: Invalid output devices (%#x)", __func__, get_device_types(&devices));
         goto exit;
     }
