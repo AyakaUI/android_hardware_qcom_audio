@@ -506,6 +506,7 @@ struct stream_out {
 
     int non_blocking;
     int playback_started;
+    bool mmap_running;
     int offload_state; /* guarded by latch_lock */
     pthread_cond_t offload_cond;
     pthread_t offload_thread;
