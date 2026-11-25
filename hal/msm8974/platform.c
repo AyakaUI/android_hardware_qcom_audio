@@ -2026,8 +2026,6 @@ static void update_codec_type_and_interface(struct platform_data * my_data,
                    sizeof("holi-qrd-snd-card")) ||
          !strncmp(snd_card_name, "holi-qrdsku1-snd-card",
                    sizeof("holi-qrdsku1-snd-card")) ||
-         !strncmp(snd_card_name, "holi-9370_fs1815-snd-card",
-                   sizeof("holi-9370_fs1815-snd-card")) ||
          !strncmp(snd_card_name, "msm8937-snd-card-mtp",
                    sizeof("msm8937-snd-card-mtp")) ||
          !strncmp(snd_card_name, "msm8953-snd-card-mtp",
@@ -3726,9 +3724,7 @@ void *platform_init(struct audio_device *adev)
                sizeof("sa8295-adp-star-snd-card"))) {
         platform_info_init(get_xml_file_path(PLATFORM_INFO_XML_PATH_SA8295_ADP),
             my_data, PLATFORM);
-    } else if (my_data->is_internal_codec && (strstr(snd_card_name, "sdm429w") == NULL) &&
-               strncmp(snd_card_name, "holi-9370_fs1815-snd-card",
-                       sizeof("holi-9370_fs1815-snd-card"))) {
+    } else if (my_data->is_internal_codec && (strstr(snd_card_name, "sdm429w") == NULL)) {
         platform_info_init(get_xml_file_path(PLATFORM_INFO_XML_PATH_INTCODEC_NAME),
             my_data, PLATFORM);
 	} else if (!strncmp(snd_card_name, "lahaina-yupikdashcam-snd-card",
@@ -4120,20 +4116,16 @@ acdb_init_fail:
             if (default_rx_backend)
                 free(default_rx_backend);
             default_rx_backend = strdup("WSA_CDC_DMA_RX_0");
-            if ((!strncmp(snd_card_name, "bengal", strlen("bengal")) &&
-                 strncmp(snd_card_name, "bengal-scuba", strlen("bengal-scuba"))) ||
-                (!strncmp(snd_card_name, "holi", strlen("holi")) &&
-                 strncmp(snd_card_name, "holi-9370_fs1815-snd-card",
-                         sizeof("holi-9370_fs1815-snd-card")))) {
+            if((!strncmp(snd_card_name, "bengal", strlen("bengal")) &&
+               strncmp(snd_card_name, "bengal-scuba", strlen("bengal-scuba"))) ||
+               !strncmp(snd_card_name, "holi", strlen("holi"))) {
                 my_data->current_backend_cfg[DEFAULT_CODEC_BACKEND].bitwidth_mixer_ctl =
                         strdup("RX_CDC_DMA_RX_1 Format");
                 my_data->current_backend_cfg[DEFAULT_CODEC_BACKEND].samplerate_mixer_ctl =
                         strdup("RX_CDC_DMA_RX_1 SampleRate");
                 default_rx_backend = strdup("RX_CDC_DMA_RX_1");
                 my_data->is_multiple_sample_rate_combo_supported = false;
-            } else if (!strncmp(snd_card_name, "bengal-scuba", strlen("bengal-scuba")) ||
-                       !strncmp(snd_card_name, "holi-9370_fs1815-snd-card",
-                                sizeof("holi-9370_fs1815-snd-card"))) {
+            } else if (!strncmp(snd_card_name, "bengal-scuba", strlen("bengal-scuba"))) {
                 my_data->current_backend_cfg[DEFAULT_CODEC_BACKEND].bitwidth_mixer_ctl =
                         strdup("RX_CDC_DMA_RX_0 Format");
                 my_data->current_backend_cfg[DEFAULT_CODEC_BACKEND].samplerate_mixer_ctl =
